@@ -3,6 +3,7 @@ package pageFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.net.MalformedURLException;
 import java.time.Duration;
 
@@ -13,7 +14,7 @@ public class BasePage {
     Boolean isRemote = Boolean.valueOf(System.getProperty("isRemote"));
 
     public BasePage() throws MalformedURLException {
-        if (browserType == null){
+        if (browserType == null) {
             browserType = "Chrome";
         }
         this.driver = WebDriverFactory.createWebDriver(browserType, isRemote);
@@ -22,7 +23,7 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void quit(){
+    public void quit() {
         WebDriverFactory.shutDown();
     }
 }

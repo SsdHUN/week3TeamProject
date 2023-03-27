@@ -8,8 +8,6 @@ import java.net.MalformedURLException;
 
 public class LoginPageTest {
     static LoginPage loginPage;
-    static final String VALID_USERNAME = System.getProperty("username");
-    static final String VALID_PASSWORD = System.getProperty("password");
     static final String EXPECTED_ERROR_MSG = "Sorry, your username and password are incorrect - please try again.";
     static String EXPECTED_LOGOUT_MSG = "You are now logged out. Any automatic login has also been stopped.";
 
@@ -21,16 +19,17 @@ public class LoginPageTest {
 
     @Test
     public void validLogin() throws MalformedURLException {
-        loginPage.loggingIn(VALID_USERNAME, VALID_PASSWORD);
+        loginPage.loggingIn(Util.VALID_USERNAME, Util.VALID_PASSWORD);
         DashboardPage dashBoard = new DashboardPage();
         ProfilePage profilePage = new ProfilePage();
         dashBoard.navigateProfilePage();
         String username = profilePage.getUserName();
-        Assertions.assertEquals(username,VALID_USERNAME);
+        Assertions.assertEquals(username, Util.VALID_USERNAME);
         dashBoard.logout();
     }
+
     @Test
-    public void emptyFieldLogin(){
+    public void emptyFieldLogin() {
         loginPage.clickOnLoginBtn();
         String errorMsg = loginPage.getErrorMsg();
         Assertions.assertEquals(errorMsg, EXPECTED_ERROR_MSG);
@@ -38,16 +37,16 @@ public class LoginPageTest {
 
     @Test
     public void logoutAfterASuccessfulLogin() throws MalformedURLException {
-        loginPage.loggingIn(VALID_USERNAME, VALID_PASSWORD);
+        loginPage.loggingIn(Util.VALID_USERNAME, Util.VALID_PASSWORD);
         DashboardPage dashBoard = new DashboardPage();
         dashBoard.logout();
-        Assertions.assertEquals(loginPage.getLogoutMsg(),EXPECTED_LOGOUT_MSG);
-
+        Assertions.assertEquals(loginPage.getLogoutMsg(), EXPECTED_LOGOUT_MSG);
 
 
     }
+
     @AfterEach
-    public void tearDown(){
+    public void tearDown() {
         loginPage.quit();
     }
 }

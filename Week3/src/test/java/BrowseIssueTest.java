@@ -13,8 +13,6 @@ public class BrowseIssueTest {
     static LoginPage loginPage;
     static IssuePage issuePage;
     static DashboardPage dashboardPage;
-    static final String VALID_USERNAME = System.getProperty("username");
-    static final String VALID_PASSWORD = System.getProperty("password");
 
 
     @BeforeEach
@@ -23,11 +21,12 @@ public class BrowseIssueTest {
         loginPage = new LoginPage();
         issuePage = new IssuePage();
         loginPage.navigateToDashboardLoginPage();
-        loginPage.loggingIn(VALID_USERNAME, VALID_PASSWORD);
+        loginPage.loggingIn(Util.VALID_USERNAME, Util.VALID_PASSWORD);
 
     }
-    public void browseIssue(String Url, String expectedResult){
-        dashboardPage.waitToPresentPfofilBtn();
+
+    public void browseIssue(String Url, String expectedResult) {
+        dashboardPage.waitToPresentProfileBtn();
         loginPage.navigate(Url);
         assertEquals(issuePage.getIssueKey(), expectedResult);
     }
@@ -35,21 +34,21 @@ public class BrowseIssueTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/issues.csv")
-    public void browseIssueTest(String issue, String expectedResult){
+    public void browseIssueTest(String issue, String expectedResult) {
         browseIssue(issue, expectedResult);
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/issueswitherror.csv")
-    public void browseIssueWithError(String issue, String errorMessage){
-        dashboardPage.waitToPresentPfofilBtn();
+    @CsvFileSource(resources = "/issuesWithError.csv")
+    public void browseIssueWithError(String issue, String errorMessage) {
+        dashboardPage.waitToPresentProfileBtn();
         loginPage.navigate(issue);
-        Assertions.assertEquals(issuePage.cantViewErrorDisplayed(),errorMessage);
+        Assertions.assertEquals(issuePage.cantViewErrorDisplayed(), errorMessage);
 
     }
 
     @AfterEach
-    public void tearDown(){
+    public void tearDown() {
         loginPage.quit();
     }
 }

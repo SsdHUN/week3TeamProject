@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Objects;
@@ -13,16 +14,16 @@ import java.util.Objects;
 
 public class WebDriverFactory {
 
-    //static String gridUrl = "http://localhost:4444/";
 
     static String gridPassword = System.getProperty("gridPassword");
     static String gridUrl = String.format("https://selenium:%s@seleniumhub.codecool.metastage.net/wd/hub", gridPassword);
 
 
     private static WebDriver webDriver = null;
+
     public static WebDriver createWebDriver(String browserName, boolean isRemote) throws MalformedURLException {
-        if (webDriver == null){
-            if (!isRemote){
+        if (webDriver == null) {
+            if (!isRemote) {
                 switch (browserName) {
                     case "Firefox" -> webDriver = new FirefoxDriver();
                     case "Chrome" -> {
@@ -32,7 +33,7 @@ public class WebDriverFactory {
                     }
                 }
             } else {
-                if (Objects.equals(browserName, "Chrome")){
+                if (Objects.equals(browserName, "Chrome")) {
                     ChromeOptions chromeOptions = new ChromeOptions();
                     webDriver = new RemoteWebDriver(new URL(gridUrl), chromeOptions);
                 } else {
@@ -43,6 +44,7 @@ public class WebDriverFactory {
         }
         return webDriver;
     }
+
     public static void shutDown() {
         webDriver.quit();
         webDriver = null;

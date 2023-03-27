@@ -5,14 +5,16 @@ import org.openqa.selenium.support.FindBy;
 
 import java.net.MalformedURLException;
 
-public class ProfilePage extends BasePage{
+public class ProfilePage extends BasePage {
 
-    public ProfilePage() throws MalformedURLException { super();}
+    public ProfilePage() throws MalformedURLException {
+        super();
+    }
 
     @FindBy(id = "up-d-username")
     WebElement username;
 
-    public String getUserName(){
+    public String getUserName() {
         return username.getText();
     }
 }

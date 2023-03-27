@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import pageFactory.DashboardPage;
 import pageFactory.LoginPage;
 import pageFactory.ProjectPage;
+import pageFactory.Util;
 
 import java.net.MalformedURLException;
 
@@ -15,48 +16,46 @@ public class BrowseProjectTest {
     static LoginPage loginPage;
     static DashboardPage dashBoard;
     static ProjectPage projectPage;
-    static final String VALID_USERNAME = System.getProperty("username");
-    static final String VALID_PASSWORD = System.getProperty("password");
+
     @BeforeEach
     public void init() throws MalformedURLException {
         loginPage = new LoginPage();
         projectPage = new ProjectPage();
         dashBoard = new DashboardPage();
         loginPage.navigateToDashboardLoginPage();
-        loginPage.loggingIn(VALID_USERNAME, VALID_PASSWORD);
+        loginPage.loggingIn(Util.VALID_USERNAME, Util.VALID_PASSWORD);
     }
 
     public void browseProject(String url, String expected) {
-        dashBoard.waitToPresentPfofilBtn();
+        dashBoard.waitToPresentProfileBtn();
         dashBoard.navigate(url);
-        Assertions.assertEquals(expected,projectPage.getKey());
+        Assertions.assertEquals(expected, projectPage.getKey());
     }
 
     @ParameterizedTest
     @CsvFileSource(resources = "/browseProject.csv")
-    public void browseProjectParameterized(String url,String key) {
+    public void browseProjectParameterized(String url, String key) {
         browseProject(url, key);
     }
 
     @Test
-    public void browseProjectWithoutPermission(){
-        dashBoard.waitToPresentPfofilBtn();
+    public void browseProjectWithoutPermission() {
+        dashBoard.waitToPresentProfileBtn();
         dashBoard.navigate("https://jira-auto.codecool.metastage.net/projects/MTP3/summary");
         Assertions.assertEquals("You can't view this project", projectPage.getErrorMessage());
     }
 
     @Test
-    public void browseNonExistentProject(){
-        dashBoard.waitToPresentPfofilBtn();
+    public void browseNonExistentProject() {
+        dashBoard.waitToPresentProfileBtn();
         dashBoard.navigate("https://jira-auto.codecool.metastage.net/projects/MTP2/summary");
         Assertions.assertEquals("You can't view this project", projectPage.getErrorMessage());
     }
 
     @AfterEach
-    public void tearDown(){
+    public void tearDown() {
         loginPage.quit();
     }
-
 
 
 }
