@@ -13,8 +13,11 @@ import java.util.Objects;
 
 public class WebDriverFactory {
 
-    static String gridUrl = "http://localhost:4444/";
+    //static String gridUrl = "http://localhost:4444/";
+
     static String gridPassword = System.getProperty("gridPassword");
+    static String gridUrl = String.format("https://selenium:%s@seleniumhub.codecool.metastage.net/wd/hub", gridPassword);
+
 
     private static WebDriver webDriver = null;
     public static WebDriver createWebDriver(String browserName, boolean isRemote) throws MalformedURLException {
