@@ -14,7 +14,7 @@ public class LoginPageTest {
     static String EXPECTED_LOGOUT_MSG = "You are now logged out. Any automatic login has also been stopped.";
 
     @BeforeEach
-    public void init() {
+    public void init() throws MalformedURLException {
         loginPage = new LoginPage();
         loginPage.navigateToDashboardLoginPage();
     }
@@ -37,7 +37,7 @@ public class LoginPageTest {
     }
 
     @Test
-    public void logoutAfterASuccessfulLogin(){
+    public void logoutAfterASuccessfulLogin() throws MalformedURLException {
         loginPage.loggingIn(VALID_USERNAME, VALID_PASSWORD);
         DashboardPage dashBoard = new DashboardPage();
         dashBoard.logout();

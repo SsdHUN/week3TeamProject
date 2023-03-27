@@ -5,10 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.net.MalformedURLException;
 import java.util.List;
 
 public class IssuePage extends BasePage{
-    public IssuePage() {
+    public IssuePage() throws MalformedURLException {
         super();
     }
 
@@ -81,8 +82,7 @@ public class IssuePage extends BasePage{
     public int issueListSize(){
         wait.until(ExpectedConditions.elementToBeClickable(issueList));
         List<WebElement> liElements = issueList.findElements(By.tagName("li"));
-        int listLength = liElements.size();
-        return listLength;
+        return liElements.size();
     }
     public void clickOnEditIssueBtn(){
         wait.until(ExpectedConditions.elementToBeClickable(editIssueBtn));

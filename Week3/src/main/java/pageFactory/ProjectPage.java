@@ -4,8 +4,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.net.MalformedURLException;
+
 public class ProjectPage extends BasePage {
-    public ProjectPage() {
+    public ProjectPage() throws MalformedURLException {
         super();
     }
     @FindBy (xpath = "//*[@id='summary-body']/div/div[2]/dl/dd[2]")

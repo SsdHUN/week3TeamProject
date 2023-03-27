@@ -13,7 +13,6 @@ public class ProfilePage extends BasePage{
     WebElement username;
 
     public String getUserName(){
-        String name = username.getText();
-        return name;
+        return username.getText();
     }
 }

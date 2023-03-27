@@ -2,6 +2,9 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import pageFactory.*;
+
+import java.net.MalformedURLException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EditIssueTest {
@@ -14,7 +17,7 @@ public class EditIssueTest {
     static final String EDIT_DATA = "TestIssue2";
     static final String EMPTY_ERROR = "You must specify a summary of the issue.";
     @BeforeEach
-    public void init(){
+    public void init() throws MalformedURLException {
 
         dashboardPage = new DashboardPage();
         loginPage = new LoginPage();

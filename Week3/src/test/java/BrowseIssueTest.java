@@ -4,6 +4,8 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import pageFactory.*;
 
 
+import java.net.MalformedURLException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BrowseIssueTest {
@@ -16,7 +18,7 @@ public class BrowseIssueTest {
 
 
     @BeforeEach
-    public void init(){
+    public void init() throws MalformedURLException {
         dashboardPage = new DashboardPage();
         loginPage = new LoginPage();
         issuePage = new IssuePage();

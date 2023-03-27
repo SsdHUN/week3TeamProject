@@ -4,6 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.net.MalformedURLException;
+
 
 public class DashboardPage extends BasePage {
     @FindBy (id = "header-details-user-fullname")
@@ -31,7 +33,8 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = "//*[@id='dialog-form']/div/div[2]/div[1]/div")
     WebElement issueSummaryErrorMsg;
 
-    public DashboardPage() {
+    public DashboardPage() throws MalformedURLException {
+        super();
     }
 
     public String getSummoryErrorMsg(){

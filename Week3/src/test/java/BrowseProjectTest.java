@@ -18,7 +18,7 @@ public class BrowseProjectTest {
     static final String VALID_USERNAME = System.getProperty("username");
     static final String VALID_PASSWORD = System.getProperty("password");
     @BeforeEach
-    public void init() {
+    public void init() throws MalformedURLException {
         loginPage = new LoginPage();
         projectPage = new ProjectPage();
         dashBoard = new DashboardPage();
