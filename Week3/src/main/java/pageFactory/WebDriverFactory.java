@@ -14,7 +14,9 @@ import java.util.Objects;
 
 public class WebDriverFactory {
 
-    static String gridUrl = String.format("https://selenium:%s@seleniumhub.codecool.metastage.net/wd/hub", Util.GRID_PASSWORD);
+    //static String gridUrl = String.format("https://selenium:%s@seleniumhub.codecool.metastage.net/wd/hub", Util.GRID_PASSWORD);
+
+    static String gridUrl = Util.GRID_URL;
 
 
     private static WebDriver webDriver = null;
