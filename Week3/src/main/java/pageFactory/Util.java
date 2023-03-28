@@ -28,38 +28,18 @@ public class Util {
 
     static {
         if (Boolean.parseBoolean(System.getProperty("isRemote"))) {
-            VALID_USERNAME = readProperty("username");
-        } else {
             VALID_USERNAME = System.getProperty("username");
+        } else {
+            VALID_USERNAME = readProperty("username");
         }
     }
     public static String VALID_PASSWORD;
 
     static {
         if (Boolean.parseBoolean(System.getProperty("isRemote"))) {
-            VALID_PASSWORD = readProperty("password");
-        } else {
             VALID_PASSWORD = System.getProperty("password");
-        }
-    }
-    public static String GRID_PASSWORD;
-
-    static {
-        if (Boolean.parseBoolean(System.getProperty("isRemote"))) {
-            GRID_PASSWORD = readProperty("gridPassword");
         } else {
-            GRID_PASSWORD = System.getProperty("gridPassword");
-        }
-    }
-
-
-    public static String GRID_URL;
-
-    static {
-        if (Boolean.parseBoolean(System.getProperty("isRemote"))) {
-            GRID_URL = readProperty("gridURL");
-        } else {
-            GRID_URL = System.getProperty("gridURL");
+            VALID_PASSWORD = readProperty("password");
         }
     }
 
