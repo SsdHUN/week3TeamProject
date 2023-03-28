@@ -19,14 +19,16 @@ pipeline{
         }
         stage("Running"){
             parallel{
-                    dir('Week3') {
                     stage("With Chrome"){
                         steps{
+                            dir('Week3'){
                             sh 'mvn test -DbrowserType=Chrome'
+                            }
                         }
                     }
                     stage("With Firefox"){
                         steps{
+                            dir('Week3'){
                             sh 'mvn test -DbrowserType=Firefox'
                             }
                         }
