@@ -26,5 +26,5 @@ public class Util {
     public static String VALID_USERNAME = readProperty("username");
     public static String VALID_PASSWORD = readProperty("password");
     public static String GRID_PASSWORD = readProperty("gridPassword");
-    public static String loginURL = readProperty("loginURL");
+
 }
