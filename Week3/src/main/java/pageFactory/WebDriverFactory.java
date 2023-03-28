@@ -23,8 +23,10 @@ public class WebDriverFactory {
         if (webDriver == null) {
             if (!isRemote) {
                 switch (browserName) {
-                    case "Firefox" -> webDriver = new FirefoxDriver();
-                    case "Chrome" -> {
+                    case "Firefox":
+                        webDriver = new FirefoxDriver();
+                        break;
+                    case "Chrome": {
                         ChromeOptions chromeOptions = new ChromeOptions();
                         chromeOptions.addArguments("--remote-allow-origins=*");
                         webDriver = new ChromeDriver(chromeOptions);
