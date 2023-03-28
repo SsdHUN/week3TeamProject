@@ -5,7 +5,7 @@ pipeline{
   stages {
         stage("build"){
             steps{
-                sh(script: "mvn mvn -f Week3/pom.xml compile")
+                sh(script: "mvn -f Week3/pom.xml compile")
             }
         }
         stage("run"){
