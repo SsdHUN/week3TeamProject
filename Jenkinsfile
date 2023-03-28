@@ -13,7 +13,7 @@ pipeline{
         stage("Build"){
             steps{
                 dir('Week3'){
-                sh 'mvn -B clean package'
+                sh 'mvn compile'
                 }
             }
         }
