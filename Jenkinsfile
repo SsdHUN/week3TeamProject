@@ -21,12 +21,12 @@ pipeline{
             parallel{
                     stage("With Chrome"){
                         steps{
-                            sh(script: "mvn test -DisRemote=true -DbrowserType=Chrome")
+                            sh 'mvn test -DbrowserType=Chrome'
                         }
                     }
                     stage("With Firefox"){
                         steps{
-                            sh(script: "mvn test -DisRemote=true -DbrowserType=Firefox")
+                            sh 'mvn test -DbrowserType=Firefox'
                         }
                     }
                 }
@@ -35,6 +35,7 @@ pipeline{
                 always {
                     junit testResults: '**/target/surefire-reports/TEST-*.xml', skipPublishingChecks: true
                     cleanWs()
+                    echo 'Workspace is cleaned'
                 }
             }
         }
