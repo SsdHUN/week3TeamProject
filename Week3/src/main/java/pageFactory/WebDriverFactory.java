@@ -29,6 +29,7 @@ public class WebDriverFactory {
                         ChromeOptions chromeOptions = new ChromeOptions();
                         chromeOptions.addArguments("--remote-allow-origins=*");
                         webDriver = new ChromeDriver(chromeOptions);
+                        break;
                     }
                 }
             } else {

@@ -22,14 +22,14 @@ pipeline{
                     stage("With Chrome"){
                         steps{
                             dir('Week3'){
-                            sh 'mvn test -DbrowserType=Chrome'
+                            sh 'mvn test -Dusername=$username -Dpassword=$password -DbrowserType=Chrome'
                             }
                         }
                     }
                     stage("With Firefox"){
                         steps{
                             dir('Week3'){
-                            sh 'mvn test -DbrowserType=Firefox'
+                            sh 'mvn test -Dusername=$username -Dpassword=$password -DbrowserType=Firefox'
                             }
                         }
                     }
