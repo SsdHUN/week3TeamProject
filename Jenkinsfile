@@ -3,21 +3,30 @@ pipeline{
   agent any
 
   stages {
-        stage("build"){
-            steps{
-                sh(script: "mvn -f Week3/pom.xml compile")
+        stage('Workspace setup') {
+            steps {
+                cleanWs()
+                echo 'Workspace is cleaned'
+                checkout scm
             }
         }
-        stage("run"){
+        stage("Build"){
+            steps{
+                dir('Week3'){
+                sh 'mvn -B clean package'
+                }
+            }
+        }
+        stage("Running"){
             parallel{
                     stage("With Chrome"){
                         steps{
-                            sh(script: "mvn clean test -DisRemote=true -DbrowserType=Chrome")
+                            sh(script: "mvn test -DisRemote=true -DbrowserType=Chrome")
                         }
                     }
                     stage("With Firefox"){
                         steps{
-                            sh(script: "mvn clean test -DisRemote=true -DbrowserType=Firefox")
+                            sh(script: "mvn test -DisRemote=true -DbrowserType=Firefox")
                         }
                     }
                 }
