@@ -34,7 +34,6 @@ pipeline{
                         }
                     }
                 }
-            }
         stage("BrowseIssue Tests"){
             parallel{
                     stage("With Chrome"){
@@ -52,7 +51,6 @@ pipeline{
                         }
                     }
                 }
-            }
         stage("CreateIssue Tests"){
             parallel{
                     stage("With Chrome"){
@@ -70,7 +68,6 @@ pipeline{
                         }
                     }
                 }
-            }
         stage("EditIssue Tests"){
             parallel{
                     stage("With Chrome"){
@@ -88,7 +85,6 @@ pipeline{
                         }
                     }
                 }
-            }
         stage("BrowseProject Tests"){
             parallel{
                     stage("With Chrome"){
@@ -106,7 +102,6 @@ pipeline{
                         }
                     }
                 }
-            }
 
             post {
                 always {
@@ -117,3 +112,4 @@ pipeline{
             }
         }
     }
+}
