@@ -17,19 +17,87 @@ pipeline{
                 }
             }
         }
-        stage("Running"){
+        stage("Login Tests"){
             parallel{
                     stage("With Chrome"){
                         steps{
                             dir('Week3'){
-                            sh 'mvn test -Dusername=$username -Dpassword=$password -DbrowserType=Chrome -DisRemote=$isRemote'
+                            sh 'mvn test -Dtest="LoginPageTest" -Dusername=$username -Dpassword=$password -DbrowserType=Chrome -DisRemote=$isRemote'
                             }
                         }
                     }
                     stage("With Firefox"){
                         steps{
                             dir('Week3'){
-                            sh 'mvn test -Dusername=$username -Dpassword=$password -DbrowserType=Firefox -DisRemote=$isRemote'
+                            sh 'mvn test -Dtest="LoginPageTest" -Dusername=$username -Dpassword=$password -DbrowserType=Firefox -DisRemote=$isRemote'
+                            }
+                        }
+                    }
+                }
+        stage("BrowseIssue Tests"){
+            parallel{
+                    stage("With Chrome"){
+                        steps{
+                            dir('Week3'){
+                            sh 'mvn test -Dtest="BrowseIssueTest" -Dusername=$username -Dpassword=$password -DbrowserType=Chrome -DisRemote=$isRemote'
+                            }
+                        }
+                    }
+                    stage("With Firefox"){
+                        steps{
+                            dir('Week3'){
+                            sh 'mvn test -Dtest="BrowseIssueTest" -Dusername=$username -Dpassword=$password -DbrowserType=Firefox -DisRemote=$isRemote'
+                            }
+                        }
+                    }
+                }
+        stage("CreateIssue Tests"){
+            parallel{
+                    stage("With Chrome"){
+                        steps{
+                            dir('Week3'){
+                            sh 'mvn test -Dtest="CreateIssueTest" -Dusername=$username -Dpassword=$password -DbrowserType=Chrome -DisRemote=$isRemote'
+                            }
+                        }
+                    }
+                    stage("With Firefox"){
+                        steps{
+                            dir('Week3'){
+                            sh 'mvn test -Dtest="CreateIssueTest" -Dusername=$username -Dpassword=$password -DbrowserType=Firefox -DisRemote=$isRemote'
+                            }
+                        }
+                    }
+                }
+        stage("EditIssue Tests"){
+            parallel{
+                    stage("With Chrome"){
+                        steps{
+                            dir('Week3'){
+                            sh 'mvn test -Dtest="EditIssueTest" -Dusername=$username -Dpassword=$password -DbrowserType=Chrome -DisRemote=$isRemote'
+                            }
+                        }
+                    }
+                    stage("With Firefox"){
+                        steps{
+                            dir('Week3'){
+                            sh 'mvn test -Dtest="EditIssueTest" -Dusername=$username -Dpassword=$password -DbrowserType=Firefox -DisRemote=$isRemote'
+                            }
+                        }
+                    }
+                }
+        stage("BrowseProject Tests"){
+            parallel{
+                    stage("With Chrome"){
+                        steps{
+                            dir('Week3'){
+                            sh 'mvn test -Dtest="BrowseProjectTest" -Dusername=$username -Dpassword=$password -DbrowserType=Chrome -DisRemote=$isRemote'
+                            }
+                        }
+                    }
+                    stage("With Firefox"){
+                        steps{
+                            dir('Week3'){
+                            sh 'mvn test -Dtest="BrowseProjectTest" -Dusername=$username -Dpassword=$password -DbrowserType=Firefox -DisRemote=$isRemote'
                             }
                         }
                     }
@@ -37,7 +105,7 @@ pipeline{
 
             post {
                 always {
-                    junit testResults: '**/target/surefire-reports/TEST-*.xml', skipPublishingChecks: true
+                    junit '**/target/surefire-reports/TEST-*.xml'
                     cleanWs()
                     echo 'Workspace is cleaned'
                 }
