@@ -108,11 +108,12 @@ pipeline{
                 }
             }
 
-        stage("Workspace Teardown") {
-            steps {
-                cleanWs()
-                echo 'Workspace is cleaned'
+            post {
+                always {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    cleanWs()
+                    echo 'Workspace is cleaned'
+                }
             }
         }
     }
-}
