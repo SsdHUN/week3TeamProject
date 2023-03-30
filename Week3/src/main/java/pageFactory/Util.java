@@ -42,5 +42,14 @@ public class Util {
             VALID_PASSWORD = readProperty("password");
         }
     }
+    public static String baseURL;
+
+    static {
+        if (Boolean.parseBoolean(System.getProperty("isRemote"))) {
+            baseURL = System.getProperty("baseURL");
+        } else {
+            baseURL = readProperty("baseURL");
+        }
+    }
 
 }
