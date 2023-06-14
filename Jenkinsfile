@@ -6,7 +6,7 @@ pipeline{
         stage('Workspace setup') {
             steps {
                 cleanWs()
-                echo 'Workspace is cleaned'ä
+                echo 'Workspace is cleaned'
                 checkout scm
             }
         }
