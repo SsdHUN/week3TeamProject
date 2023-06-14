@@ -59,7 +59,7 @@ public class LoginPage extends BasePage {
     }
 
     public void navigateToDashboardLoginPage() {
-        driver.get("https://jira-auto.codecool.metastage.net/secure/Dashboard.jspa");
+        driver.get(Util.baseURL);
     }
 
     public void navigate(String url) {

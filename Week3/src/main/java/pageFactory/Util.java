@@ -1,6 +1,5 @@
 package pageFactory;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -40,6 +39,15 @@ public class Util {
             VALID_PASSWORD = System.getProperty("password");
         } else {
             VALID_PASSWORD = readProperty("password");
+        }
+    }
+    public static String baseURL;
+
+    static {
+        if (Boolean.parseBoolean(System.getProperty("isRemote"))) {
+            baseURL = System.getProperty("baseURL");
+        } else {
+            baseURL = readProperty("baseURL");
         }
     }
 
