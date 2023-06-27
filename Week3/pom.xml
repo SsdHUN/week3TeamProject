@@ -22,11 +22,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>4.8.1</version>
-        </dependency>
-        <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>5.3.1</version>
@@ -37,6 +32,14 @@
             <version>5.9.2</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- SELENIUM -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.8.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>

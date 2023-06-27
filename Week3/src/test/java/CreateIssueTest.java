@@ -59,7 +59,6 @@ public class CreateIssueTest {
         issuePage.deleteIssue();
         Assertions.assertTrue(issuePage.isDeleteIssueValidate());
     }
-
     @ParameterizedTest
     @CsvFileSource(resources = "/createIssue.csv")
     public void createIssue(String project, String type) {

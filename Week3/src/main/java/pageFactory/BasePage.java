@@ -8,6 +8,7 @@ import java.net.MalformedURLException;
 import java.time.Duration;
 
 public class BasePage {
+    //test
     WebDriverWait wait;
     WebDriver driver;
     String browserType = System.getProperty("browserType");
