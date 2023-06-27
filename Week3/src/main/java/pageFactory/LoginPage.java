@@ -24,14 +24,9 @@ public class LoginPage extends BasePage {
     WebElement logoutMsg;
 
 
-    public void setUsername(String name) {
-        username.sendKeys(name);
-    }
+    public void setUsername(String name) { username.sendKeys(name); }
 
-    public void setPassword(String pwd) {
-
-        password.sendKeys(pwd);
-    }
+    public void setPassword(String pwd) { password.sendKeys(pwd); }
 
     public void clickOnLoginBtn() {
         wait.until(ExpectedConditions.elementToBeClickable(loginBtn));
