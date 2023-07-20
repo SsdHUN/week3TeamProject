@@ -42,3 +42,6 @@ To get started with this automated testing framework, follow these steps:
    Replace the username and password with a valid username and password.
 
 4. Build and run the tests using your preferred Java development environment or command-line tools.
+    ```terminal
+   mvn test
+   ```
