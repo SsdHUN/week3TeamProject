@@ -43,5 +43,6 @@ To get started with this automated testing framework, follow these steps:
 
 4. Build and run the tests using your preferred Java development environment or command-line tools.
     ```terminal
-   mvn test
+    cd "PATH\week3TeamProject"    
+    mvn test
    ```
